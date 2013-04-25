@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Confirm - Twiq</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resource.qrc">
+    <normaloff>:/twitter-bird-white-on-blue.png</normaloff>:/twitter-bird-white-on-blue.png</iconset>
+  </property>
   <widget class="QDialogButtonBox" name="confirmButtonBox">
    <property name="geometry">
     <rect>
@@ -63,7 +67,9 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>confirmButtonBox</sender>
