@@ -1,0 +1,8 @@
+ui_auth.py
+ui_main.py
+resource_rc.py
+*.pyc
+*.pyo
+*~
+*.swp
+.directory
