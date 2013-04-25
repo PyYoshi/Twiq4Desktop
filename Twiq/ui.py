@@ -10,8 +10,41 @@ from Twiq import _, APP_CONFIG_DIR_PATH
 from Twiq.tw import Twit, Token
 from Twiq.resources.ui_main import Ui_MainWindow
 from Twiq.resources.ui_auth import Ui_AuthorizeWindow
+from Twiq.resources.ui_confirm import Ui_ConfirmDialog
 from Twiq.resources import resource_rc # リソースファイルを読み込む。使用していないわけではない。
-from Twiq.conf import read_app_config, get_accounts_list, read_account_config, AppConfig, AccountConfig, save_account_config, findAll_account_config
+from Twiq.conf import read_app_config, get_accounts_list, read_account_config, AppConfig, AccountConfig, save_account_config, delete_account_config
+
+class ConfirmDialog(QtGui.QMainWindow, Ui_ConfirmDialog):
+    def __init__(self, parent=None):
+        super(ConfirmDialog, self).__init__(parent)
+        self.setupUi(self)
+
+    @QtCore.Slot()
+    def accept(self):
+        pass
+
+    @QtCore.Slot()
+    def reject(self):
+        pass
+
+class DeleteConfirmDialog(ConfirmDialog):
+    def __init__(self, account_name, parent=None):
+        super(DeleteConfirmDialog, self).__init__(parent)
+        self.account_name = account_name
+
+    @QtCore.Slot()
+    def accept(self):
+        try:
+            delete_account_config(self.account_name)
+        except Exception as e:
+            # TODO: エラー出力
+            pass
+        finally:
+            self.close()
+
+    @QtCore.Slot()
+    def reject(self):
+        self.close()
 
 class AuthorizeWindow(QtGui.QMainWindow, Ui_AuthorizeWindow):
     def __init__(self, parent=None):
@@ -110,7 +143,10 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
 
     @QtCore.Slot()
     def delAccount(self):
-        pass
+        account_name = self.accountComboBox.currentText()
+        self.confirm_dialog = DeleteConfirmDialog(account_name,self)
+        self.confirm_dialog.msgLabel.setText('Delete %s account?' % account_name)
+        self.confirm_dialog.show()
 
     def keyPressEvent(self, event):
         screen_name = self.accountComboBox.currentText()
