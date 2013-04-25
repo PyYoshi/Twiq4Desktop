@@ -92,3 +92,7 @@ def save_account_config(account_name,config):
     # TODO: IO処理はthreadingしたい
     config_path = os.path.join(APP_CONFIG_DIR_PATH, 'account.%s.config' % account_name)
     _save_config(config_path, config)
+
+def delete_account_config(account_name):
+    config_path = os.path.join(APP_CONFIG_DIR_PATH, 'account.%s.config' % account_name)
+    os.remove(config_path)
