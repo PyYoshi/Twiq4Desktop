@@ -16,9 +16,23 @@ Twiq is Twitter Client. Written in Python.
 
 ### How to use?
 
+Prepare:
+
 ```bash
 $ mkvirtualenv Twiq
 $ pip install -r requirements
+```
+
+Run:
+
+```bash
+$ ./twiq.sh
+```
+
+or
+
+```bash
+$ workon Twiq
 $ python app.py
 ```
 
@@ -37,6 +51,7 @@ $ python app.py
 ### Requirements
 
 * [Python 2.7](http://python.org/)
+* [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/)
 * [PySide 1.1.2](http://qt-project.org/wiki/PySide)
 * [Yapsy 1.10](http://yapsy.sourceforge.net/)
 * [tweepy 1.12](https://github.com/tweepy/tweepy)
