@@ -21,6 +21,7 @@ Prepare:
 ```bash
 $ mkvirtualenv Twiq
 $ pip install -r requirements
+$ ./build_resource.sh
 ```
 
 Run:
@@ -41,6 +42,7 @@ $ python app.py
 * Plugin
 * Boss Key
 * Timeline(maybe...)
+* Save window position
 
 ### License
 
