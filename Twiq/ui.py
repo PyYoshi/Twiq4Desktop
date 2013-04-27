@@ -90,10 +90,12 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         # APP_CONFIG_DIR_PATHの監視
         self.watcher = QtCore.QFileSystemWatcher([APP_CONFIG_DIR_PATH], parent=self)
         self.connect(self.watcher, QtCore.SIGNAL('directoryChanged(const QString &)'), self.onAppConfDirChanged)
-        # 初期化段階でのアカウント情報の読み込みとcomboboxへの追加
+        # 前回使用時のアカウントを選択 & 初期化段階でのアカウント情報の読み込みとcomboboxへの追加
+        last_account_name = self.app_config.selected_account
         self.tw = None
         self.reloadAccountsConfig()
-        # print(self.accountComboBox.itemData(self.accountComboBox.currentIndex()))
+        last_account_index = self.accountComboBox.findText(last_account_name)
+        self.accountComboBox.setCurrentIndex(last_account_index)
         # TODO: 投稿モードプラグインの読み込みとcomboboxへの追加
 
     def reloadAccountsConfig(self):
@@ -133,6 +135,7 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     def accountStrIndexChanged(self):
         account = self.accountComboBox.itemData(self.accountComboBox.currentIndex())
         if account != None: self.tw = account['tw']
+        self.app_config.selected_account = self.accountComboBox.currentText()
 
     @QtCore.Slot()
     def modeStrIndexChanged(self):
