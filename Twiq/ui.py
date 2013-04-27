@@ -12,7 +12,9 @@ from Twiq.resources.ui_main import Ui_MainWindow
 from Twiq.resources.ui_auth import Ui_AuthorizeWindow
 from Twiq.resources.ui_confirm import Ui_ConfirmDialog
 from Twiq.resources import resource_rc # リソースファイルを読み込む。使用していないわけではない。
-from Twiq.conf import read_app_config, get_accounts_list, read_account_config, AppConfig, AccountConfig, save_account_config, delete_account_config
+from Twiq.conf import read_app_config, get_accounts_list, \
+    read_account_config, AppConfig, AccountConfig, \
+    save_account_config, delete_account_config, save_app_config
 
 class ConfirmDialog(QtGui.QMainWindow, Ui_ConfirmDialog):
     def __init__(self, parent=None):
@@ -175,3 +177,12 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
                 # TODO: エラー処理
                 pass
 
+    def closeEvent(self, event):
+        reply = QtGui.QMessageBox.question(self, 'Message',
+            "Are you sure to quit?", QtGui.QMessageBox.Yes |
+            QtGui.QMessageBox.No, QtGui.QMessageBox.No)
+        if reply == QtGui.QMessageBox.Yes:
+            save_app_config(self.app_config)
+            event.accept()
+        else:
+            event.ignore()
