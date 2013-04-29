@@ -1,5 +1,6 @@
 ui_auth.py
 ui_confirm.py
+ui_del_manage.py
 ui_main.py
 resource_rc.py
 *.pyc
