@@ -6,24 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>740</width>
-    <height>112</height>
+    <width>351</width>
+    <height>122</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>740</width>
-    <height>112</height>
+    <width>351</width>
+    <height>122</height>
    </size>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>740</width>
-    <height>112</height>
-   </size>
-  </property>
-  <property name="acceptDrops">
-   <bool>true</bool>
   </property>
   <property name="windowTitle">
    <string>Twiq</string>
@@ -33,109 +24,22 @@
     <normaloff>:/twitter-bird-white-on-blue.png</normaloff>:/twitter-bird-white-on-blue.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="gridLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>461</width>
-      <height>97</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="msg_gridlayout">
-     <item row="0" column="0">
-      <widget class="QPlainTextEdit" name="msgTextEdit">
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOn</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAsNeeded</enum>
-       </property>
-       <property name="plainText">
-        <string notr="true"/>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QComboBox" name="accountComboBox">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>20</y>
-      <width>171</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="modeComboBox">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>60</y>
-      <width>251</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="addAccountButton">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>20</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset resource="resource.qrc">
-      <normaloff>:/add.png</normaloff>:/add.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>22</width>
-      <height>22</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="delAccountButton">
-    <property name="geometry">
-     <rect>
-      <x>700</x>
-      <y>20</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset resource="resource.qrc">
-      <normaloff>:/delete.png</normaloff>:/delete.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>22</width>
-      <height>22</height>
-     </size>
-    </property>
-   </widget>
+   <property name="minimumSize">
+    <size>
+     <width>351</width>
+     <height>101</height>
+    </size>
+   </property>
    <widget class="QLabel" name="msgCountLabel">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>398</x>
-      <y>83</y>
-      <width>53</width>
-      <height>21</height>
+      <x>287</x>
+      <y>70</y>
+      <width>41</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -144,6 +48,9 @@
       <kerning>true</kerning>
      </font>
     </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
     <property name="text">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#585858;&quot;&gt;140&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
@@ -151,7 +58,72 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
+   <widget class="QPlainTextEdit" name="msgTextEdit">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>349</width>
+      <height>99</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>320</width>
+      <height>79</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAsNeeded</enum>
+    </property>
+    <property name="plainText">
+     <string notr="true"/>
+    </property>
+   </widget>
+   <zorder>msgTextEdit</zorder>
+   <zorder>msgCountLabel</zorder>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>351</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="nativeMenuBar">
+    <bool>false</bool>
+   </property>
+   <widget class="QMenu" name="menuAccount">
+    <property name="title">
+     <string>Account</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuMode">
+    <property name="title">
+     <string>Mode</string>
+    </property>
+   </widget>
+   <addaction name="menuAccount"/>
+   <addaction name="menuMode"/>
+  </widget>
+  <action name="actionCCC">
+   <property name="text">
+    <string>CCC</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="resource.qrc"/>
@@ -164,87 +136,17 @@
    <slot>msgTextChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>215</x>
-     <y>72</y>
+     <x>151</x>
+     <y>67</y>
     </hint>
     <hint type="destinationlabel">
-     <x>217</x>
-     <y>154</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>accountComboBox</sender>
-   <signal>currentIndexChanged(QString)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>accountStrIndexChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>567</x>
-     <y>39</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>563</x>
-     <y>190</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>modeComboBox</sender>
-   <signal>currentIndexChanged(QString)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>modeStrIndexChanged()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>633</x>
-     <y>76</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>641</x>
-     <y>267</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>addAccountButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>addAccount()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>677</x>
-     <y>36</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>680</x>
-     <y>165</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>delAccountButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>delAccount()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>712</x>
-     <y>37</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>645</x>
-     <y>222</y>
+     <x>162</x>
+     <y>121</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
   <slot>msgTextChanged()</slot>
-  <slot>accountStrIndexChanged()</slot>
-  <slot>accountIntIndexChanged()</slot>
-  <slot>modeStrIndexChanged()</slot>
-  <slot>modeIntIndexChanged()</slot>
-  <slot>addAccount()</slot>
-  <slot>delAccount()</slot>
  </slots>
 </ui>
