@@ -36,7 +36,7 @@ class Twit(object):
         return Token(self.auth.access_token.key, self.auth.access_token.secret)
 
     @classmethod
-    def _get_msg_length(cls, msg):
+    def get_msg_length(cls, msg):
         """
         https://dev.twitter.com/docs/api/1.1/get/help/configuration
         """
@@ -54,16 +54,13 @@ class Twit(object):
         """
         max_msg_length = 140
         is_valid = False
-        msg_length = cls._get_msg_length(msg)
+        msg_length = cls.get_msg_length(msg)
         reminder = 140 - msg_length
         if 0 < msg_length <= max_msg_length: is_valid = True
         return (is_valid, reminder)
 
     def post(self, msg):
         return self.api.update_status(status=msg)
-
-    def undo_post(self):
-        pass
 
     def verify_credentials(self, include_entities=True, skip_status=False):
         return self.api.verify_credentials(include_entities=include_entities, skip_status=skip_status)
