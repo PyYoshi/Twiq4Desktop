@@ -71,6 +71,7 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
         self.accounts_group = QtGui.QActionGroup(self)
+        self.accounts_group.triggered.connect(self.onCheckedAccount)
         # menuModeを無効化
         self.menuMode.setEnabled(False)
         # App Configのロード
@@ -98,6 +99,10 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         self.msgCountLabel.raise_()
 
     def reloadAccountsConfig(self):
+        # 選択済みアカウントのチェック
+        checked_account_name = None
+        if self.accounts_group.checkedAction():
+            checked_account_name = self.accounts_group.checkedAction().text()
         # 初期化 & アカウント追加削除アクションの追加
         self.menuAccount.clear()
         self.accounts = dict()
@@ -110,10 +115,6 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         delete_action.triggered.connect(self.delAccount)
         self.menuAccount.addActions([add_action,delete_action])
         self.menuAccount.addSeparator()
-        # 選択済みアカウントのチェック
-        checked_account_name = None
-        if self.accounts_group.checkedAction():
-            checked_account_name = self.accounts_group.checkedAction().text()
         # アカウントをmenuAccountへ追加
         actions = []
         for account_name in get_accounts_list():
@@ -134,6 +135,10 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
 
     def onAppConfDirChanged(self, path):
         self.reloadAccountsConfig()
+
+    def onCheckedAccount(self, action):
+        if action:
+            self.tw = self.accounts[action.text()]['tw']
 
     @QtCore.Slot()
     def msgTextChanged(self):
