@@ -88,6 +88,7 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         if last_account_name:
             self.accounts[last_account_name]['action'].setChecked(True)
             self.tw = self.accounts[last_account_name]['tw']
+            self.setWindowTitle('Twiq - ' + last_account_name)
         # TODO: 投稿モードプラグインの読み込みとmenuModeへの追加
 
     def resizeEvent(self, event):
@@ -139,6 +140,7 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     def onCheckedAccount(self, action):
         if action:
             self.tw = self.accounts[action.text()]['tw']
+            self.setWindowTitle('Twiq - ' + action.text())
 
     @QtCore.Slot()
     def msgTextChanged(self):
